@@ -56,11 +56,11 @@
                       {{ user.created_at }}
                     </td>
                     <td class="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
-                      <button @click="edit" type="input" class="mr-3"> <svg class="w-6 h-6 hover:fill-green-500" fill="none"  stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <router-link :to="{name: 'Edit', params: {id: user.id}}" class="mr-3"><button><svg class="w-6 h-6 hover:fill-green-500" fill="none"  stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"> 
                         <path stroke-linecap="round" 
                         stroke-linejoin="round" 
                         stroke-width="2" 
-                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg></button>
+                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg></button></router-link>
                       <button @click.prevent="remove(user.id)" type="input"> <svg class="w-6 h-6 hover:fill-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" 
                         stroke-linejoin="round" 
@@ -80,23 +80,20 @@
 
 <script>
     import axios from 'axios';
-import { nextTick } from 'vue';
-    
-    
   
     export default {
 
       data () {
         return {
           users: Array,
-        
         }
         
       },
       methods: {
         edit () {
-          console.log('clicked edit');
+          
         },
+        
         async remove (id) {
           try {
               await axios.delete(`/user/delete/${id}`).then((res) => {
@@ -111,13 +108,13 @@ import { nextTick } from 'vue';
           
         
         },
-        
+
         async getUsers () {
           try {
           const res = await axios.get('/users').then((
             res) => {
               this.users = res.data.data;
-              console.log(res);
+              // console.log(res);
             });
           
         }
@@ -129,7 +126,6 @@ import { nextTick } from 'vue';
 
       },
       async mounted () {
-
         this.getUsers();
       }
 

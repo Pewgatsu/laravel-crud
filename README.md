@@ -34,6 +34,7 @@ Start the server
 
 Edit vite.config.js and add this
 ```bash
+<<<<<<< HEAD
 
 
 import vue from '@vitejs/plugin-vue';
@@ -54,3 +55,21 @@ export default defineConfig({
 
 ```
 
+=======
+import vue from '@vitejs/plugin-vue';
+import { defineConfig } from 'vite';
+import laravel from 'laravel-vite-plugin';
+import vue from '@vitejs/plugin-vue';
+
+export default defineConfig({
+    plugins: [
+        vue(),
+        laravel({
+            input: ['resources/css/app.css', 'resources/js/app.js'],
+            refresh: true,
+        }),
+    ],
+});
+```
+
+>>>>>>> 5e94f4a (Finished adding the update functionality)

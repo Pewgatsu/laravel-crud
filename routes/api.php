@@ -20,4 +20,7 @@ use App\Http\Controllers\Api\UserController;
 
 Route::get('/users', [UserController::class, 'index']);
 Route::post('/user/create', [UserController::class, 'store']);
+Route::get('/user/retrieve/{id}', [UserController::class, 'retrieveUser']);
+Route::post('/user/update/{id}', [UserController::class, 'update']);
 Route::delete('/user/delete/{id}', [UserController::class, 'delete']);
+ 
