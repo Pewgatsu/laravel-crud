@@ -53,7 +53,7 @@ import axios from 'axios';
                         alert(res.data.message);
                         this.$router.push({name:'Users'});
                     }else{
-                        alert(resr.data.message);
+                        alert(res.data.message);
                     }
                 }) 
         }
