@@ -15,6 +15,12 @@
                   <li class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500">
                     <router-link to="/users">Show Users</router-link>
                   </li>
+                  <!-- <li class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500">
+                    <router-link to="/users">My Posts</router-link>
+                  </li> -->
+                  <li class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500">
+                    <router-link to="/user/AddPost">Add Post</router-link>
+                  </li>
                 </ul>
               </div>
             </div>

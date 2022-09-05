@@ -20,7 +20,7 @@
         </form>
     </div>
 
-  </template>
+</template>
   
   <script>
 import axios from 'axios';
@@ -42,7 +42,7 @@ import axios from 'axios';
                     if(res.status == 200){
                         alert(res.data.message);
                     }else{
-                        alert(resr.data.message);
+                        alert(res.data.message);
                     }
                 }) 
                 this.user = {};

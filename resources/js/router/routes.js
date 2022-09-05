@@ -5,6 +5,9 @@ import ShowUsers from '../components/ShowUsers.vue';
 import CreateUser from '../components/CreateUser.vue';
 import EditUser from '../components/EditUser.vue';
 
+import AddPost from '../components/AddPost.vue';
+import Login from '../components/Login.vue';
+
 
 const routes = [
     {
@@ -26,6 +29,17 @@ const routes = [
         path: '/edit/user/:id?',
         name: 'Edit',
         component: EditUser
+    },
+   
+    {
+        path: '/user/AddPost',
+        name: 'AddPost',
+        component: AddPost
+    },
+    {
+        path: '/login',
+        name: 'Login',
+        component: Login
     }
 ]
 

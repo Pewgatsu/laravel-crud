@@ -50,6 +50,13 @@ export default defineConfig({
     ],
 });
 
-
 ```
+
+Populating the database
+
+```bash
+  php artisan migrate:fresh --seed
+```
+
+
 

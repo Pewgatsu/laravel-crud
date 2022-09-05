@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\PostController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -23,4 +24,11 @@ Route::post('/user/create', [UserController::class, 'store']);
 Route::get('/user/retrieve/{id}', [UserController::class, 'retrieveUser']);
 Route::post('/user/update/{id}', [UserController::class, 'update']);
 Route::delete('/user/delete/{id}', [UserController::class, 'delete']);
+
+// Api route for posts
+
+Route::get('/user/posts', [PostController::class, 'index']);
+Route::post('/post/add', [PostController::class, 'store']);
+
+
  

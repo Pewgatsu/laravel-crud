@@ -57,10 +57,7 @@ class UserController extends Controller
             'message' => 'User updated',
             'code' => 200
         ]);
-
     }
-
-    
 
     public function delete($id) {
         $user = User::find($id)->delete();
