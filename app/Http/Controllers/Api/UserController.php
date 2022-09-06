@@ -17,6 +17,16 @@ class UserController extends Controller
         return UserResource::collection($users);
     }
 
+    public function getNames() {
+
+        $names = User::select('id','name')->get();
+
+        return response()->json($names);
+
+    }
+
+
+
     public function store(Request $request) {
 
 

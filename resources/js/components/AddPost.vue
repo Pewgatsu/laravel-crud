@@ -3,17 +3,23 @@
 
         <form @submit.prevent="addPost">
 
+         
+
             <div class="mb-6">
                 <label for="title" class="block mb-2 text-sm font-medium text-gray-900">Title</label>
                 <input v-model="post.title"  type="text" class="bg-gray-50 border border-gray-300 text-gray-900 rounded text-sm block w-full p-2.5" placeholder="Your title" name="title" id="title">
             </div>
 
             <div class="mb-6">
-                <label for="user_id" class="block mb-2 text-sm font-medium text-gray-900">Enter user id</label>
-                <input v-model="post.user_id"  type="number" class="bg-gray-50 border border-gray-300 text-gray-900 rounded text-sm block w-full p-2.5" placeholder="User id" name="user_id" id="user_id">
+                <label for="users" class="block mb-2 text-sm font-medium text-gray-900">Users</label>
+                <select v-model="post.user_id" name="users" class="bg-gray-50 border border-gray-300 text-gray-900 rounded text-sm w-full p-2.5" >
+                    <option v-for="name in names" :value="name.id">
+                        {{ name.name }}
+                    </option>
+                </select>
+                
             </div>
 
-            
             
             <div class="mb-6">
                 <label for="content" class="block mb-2 text-sm font-medium text-gray-900">Your message</label>
@@ -32,15 +38,19 @@
   <script>
 import axios from 'axios';
 
+
+
       export default {
         name: 'AddPost',
+        
         data () {
             return {
                 post: {
                     title: '',
                     content: '',
-                    user_id: ''
-                }
+                    user_id: 1,
+                },
+                names: Array,   
             }
         },
         methods : {
@@ -57,24 +67,43 @@ import axios from 'axios';
                 }) 
 
                 this.post = {};
-                
             },
 
-            // async retrieveUser () {
-                
-            //     try{ 
-            //         const res = await axios.get(`/user/retrieve/3`).then((res) => {                     
-            //             this.post.user_id = res.data.id; 
-            //             //console.log(this.post.user_id);
-            //         });
-            //     } catch (error) {
-            //         console.log(error);
-            //     }
-            // },
+
+            async getPosts () {
+                try {
+                    const res = await axios.get('/user/posts').then((res) => {
+                        this.posts = res.data.data;
+                        console.log(res);
+                    })
+
+                } catch (error) {
+                    console.log(error);
+                }
+            },
+
+            async getNames () {
+
+                try {
+                    const res = await axios.get('/users/names').then((
+                        res) => {
+                        this.names = res.data;
+                        // console.log(this.names);
+                        });
+
+                } catch (error) {
+                    console.log(error);
+                }
+
+            },
+
         },
         mounted() {
-            
-            // console.log('Component mounted.')
+            this.getNames();
+            console.log('Component mounted.')
+
         },
       }
   </script>
+
+

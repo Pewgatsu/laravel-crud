@@ -12,8 +12,8 @@ class PostController extends Controller
 {
     //
     public function index () {
+        // $posts = Post::orderBy('user_id')->get();
         $posts = Post::all();
-        // $users = User::paginate(10);
         
         return PostResource::collection($posts);
     }
@@ -29,7 +29,7 @@ class PostController extends Controller
         $post = new Post([
             'title' => $request->input('title'),
             'content' => $request->input('content'),
-            'user_id' => $request->input('user_id')
+            'user_id' => $request->input('user_id'),
         ]);
 
         $post->save();

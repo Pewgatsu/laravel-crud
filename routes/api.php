@@ -20,6 +20,7 @@ use App\Http\Controllers\Api\PostController;
 // });
 
 Route::get('/users', [UserController::class, 'index']);
+Route::get('/users/names', [UserController::class, 'getNames']);
 Route::post('/user/create', [UserController::class, 'store']);
 Route::get('/user/retrieve/{id}', [UserController::class, 'retrieveUser']);
 Route::post('/user/update/{id}', [UserController::class, 'update']);
