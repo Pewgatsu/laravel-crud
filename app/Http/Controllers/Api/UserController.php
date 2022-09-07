@@ -11,10 +11,11 @@ use App\Models\User;
 class UserController extends Controller
 {
     public function index() {
-        $users = User::all();
-        // $users = User::paginate(10);
-        
+        //$users = User::all();
+        $users = User::paginate(10);
+
         return UserResource::collection($users);
+
     }
 
     public function getNames() {
@@ -22,6 +23,16 @@ class UserController extends Controller
         $names = User::select('id','name')->get();
 
         return response()->json($names);
+
+    }
+
+    public function getPosts ($id) {
+
+        $user = User::find($id);
+
+        $posts = $user->posts;
+
+        return response()->json($posts);
 
     }
 
@@ -48,7 +59,7 @@ class UserController extends Controller
 
     public function retrieveUser ($id) {
         $user = User::find($id);
-        
+
         return response()->json($user);
     }
 

@@ -22,7 +22,7 @@ class User extends Authenticatable
         'email',
     ];
 
-    protected function posts () {
+    public function posts () {
         return $this->hasMany(Post::class);
     }
 
