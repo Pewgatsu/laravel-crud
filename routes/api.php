@@ -29,7 +29,10 @@ Route::delete('/user/delete/{id}', [UserController::class, 'delete']);
 // Api route for posts
 
 Route::get('/user/posts', [PostController::class, 'index']);
+Route::get('/user/posts/{id}', [PostController::class, 'getUserPosts']);
 Route::post('/post/add', [PostController::class, 'store']);
+
+
 
 
  

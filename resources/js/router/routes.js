@@ -4,9 +4,10 @@ import HomeComponent from '../components/HomeComponent.vue';
 import ShowUsers from '../components/ShowUsers.vue';
 import CreateUser from '../components/CreateUser.vue';
 import EditUser from '../components/EditUser.vue';
-
 import AddPost from '../components/AddPost.vue';
 import Login from '../components/Login.vue';
+import UserPosts from '../components/UserPosts.vue';
+
 
 
 const routes = [
@@ -40,6 +41,11 @@ const routes = [
         path: '/login',
         name: 'Login',
         component: Login
+    },
+    {
+        path: '/user/posts/:id?',
+        name: 'UserPosts',
+        component: UserPosts
     }
 ]
 

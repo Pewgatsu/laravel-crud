@@ -18,9 +18,14 @@ class PostController extends Controller
         return PostResource::collection($posts);
     }
 
-    public function retrievePosts ($id) {
+    public function getUserPosts ($id) {
+
+
+        $posts = Post::all()->where('user_id', $id);
 
         // get all the posts of a certain user
+
+        return PostResource::collection($posts);
 
     }
 
