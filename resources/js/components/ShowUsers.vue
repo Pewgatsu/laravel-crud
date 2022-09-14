@@ -1,4 +1,5 @@
 <template>
+
     <div class="flex justify-center">
         <div class="mb-3 xl:w-96">
             <div class="input-group relative flex flex-wrap items-stretch w-full mb-4">
@@ -7,6 +8,7 @@
             </div>
         </div>
     </div>
+
     <main class="container flex items-center justify-center  mx-auto">
       <div class="flex flex-col">
         <div class="overflow-x-auto">
@@ -75,7 +77,7 @@
                           stroke-width="2"
                           d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01">
                         </path></svg></button></router-link>
-                      <button @click.prevent="remove(user.id)" type="input"> <svg class="w-6 h-6 hover:fill-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <button @click.prevent="remove(user.id)" type="button"> <svg class="w-6 h-6 hover:fill-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round"
                         stroke-linejoin="round"
                         stroke-width="2"
@@ -86,7 +88,7 @@
               </table>
             </div>
               <div class="m-auto text-center" >
-                  <Pagination :data="filterItems" @pagination-change-page="getUsers" />
+                  <Pagination :data="users" @pagination-change-page="getUsers" />
               </div>
           </div>
         </div>
@@ -99,33 +101,26 @@
     import LaravelVuePagination from 'laravel-vue-pagination';
 
 
-
     export default {
 
     components: {
-            'Pagination': LaravelVuePagination
+            'Pagination': LaravelVuePagination,
     },
     data () {
         return {
-          users: Array,
-          search: '',
+          users: Object,
+          search: "",
         }
     },
-    computed : {
-        filterItems () {
-
-            return Object.values(this.users).filter( result => {
-                return result
-            })
-
-            return this.users;
-
+    watch : {
+        search(after, before) {
+            this.getUsers();
         }
     },
+
     methods: {
 
         async remove (id) {
-
           try {
               await axios.delete(`/user/delete/${id}`).then((res) => {
               if (res.data.code == 200) {
@@ -141,21 +136,21 @@
 
         async getUsers (page = 1) {
           try {
-                const res = await axios.get(`/users?page=${page}`).then((
+                const res = await axios.get(`/users?page=${page}&search=${this.search}`).then((
                 res) => {
-                  this.users = res.data;
-                  // console.log(this.users);
+                   this.users = res.data;
+                   console.log(this.users);
                 });
             }
             catch (error) {
             console.log(error);
             }
-            console.log(this.users);
-        }
 
-          },
-        async mounted () {
-            this.getUsers();
+        },
+
+    },
+         mounted () {
+             this.getUsers();
         }
     }
 

@@ -11,10 +11,10 @@ use App\Models\User;
 class UserController extends Controller
 {
     public function index() {
-        //$users = User::all();
-        $users = User::paginate(10);
 
-        return UserResource::collection($users);
+        return User::when(request('search'), function($query) {
+            $query->where('name', 'like', '%' . request('search') . '%');
+        })->orderBy('id')->paginate(10);
 
     }
 
@@ -25,6 +25,7 @@ class UserController extends Controller
         return response()->json($names);
 
     }
+
 
     public function getPosts ($id) {
 

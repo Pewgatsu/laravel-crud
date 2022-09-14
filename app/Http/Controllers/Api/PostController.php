@@ -10,12 +10,12 @@ use App\Models\Post;
 
 class PostController extends Controller
 {
-    //
-    public function index () {
-        // $posts = Post::orderBy('user_id')->get();
-        $posts = Post::all();
 
-        return PostResource::collection($posts);
+    public function index () {
+
+        return Post::when(request('search'), function ($query) {
+            $query->where('title', 'like', '%' . request('search') . '%');
+        })->orderBy('id')->get();
     }
 
     public function getUserPosts ($id) {
