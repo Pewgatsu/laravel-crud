@@ -26,13 +26,14 @@ Route::get('/user/retrieve/{id}', [UserController::class, 'retrieveUser']);
 Route::post('/user/update/{id}', [UserController::class, 'update']);
 Route::delete('/user/delete/{id}', [UserController::class, 'delete']);
 
+Route::get('/user/posts/{id}', [UserController::class, 'getPosts']);
+
 // Api route for posts
 
 Route::get('/user/posts', [PostController::class, 'index']);
-Route::get('/user/posts/{id}', [PostController::class, 'getUserPosts']);
+//Route::get('/user/posts/{id}', [PostController::class, 'getUserPosts']);
 Route::post('/post/add', [PostController::class, 'store']);
 
 
 
 
- 
