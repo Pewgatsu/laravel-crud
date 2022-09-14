@@ -9,7 +9,7 @@
                   <li class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500">
                     <router-link to="/">Home</router-link>
                   </li>
-                  <li class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500"> 
+                  <li class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500">
                     <router-link to="/create">Create User</router-link>
                   </li>
                   <li class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500">
@@ -33,17 +33,17 @@
         <router-view></router-view>
       </transition>
     </div>
-  </template>
-  
+</template>
+
 
 
 
   <style>
-      
+
   </style>
-  
+
   <script>
-  
+
       export default{
       }
   </script>
