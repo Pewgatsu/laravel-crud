@@ -17,6 +17,14 @@ Go to the project directory
   cd laravel-crud
 ```
 
+Copy the .env file
+
+```
+cp .env.example .env
+
+Configure the databse connection.
+```
+
 Install dependencies
 
 ```bash
