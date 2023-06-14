@@ -22,8 +22,8 @@ Copy the .env file
 ```
 cp .env.example .env
 
-Configure the databse connection.
 ```
+Configure the databse connection.
 
 Install dependencies
 
